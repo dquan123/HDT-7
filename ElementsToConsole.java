@@ -4,5 +4,6 @@ public class ElementsToConsole<K extends Comparable<K>, V> implements ITraversal
     public void visitar(BinaryTreeNode<K, V> actualNode) {
        System.out.println(actualNode.get_value().toString());
     }
+
     
 }
