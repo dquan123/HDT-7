@@ -132,6 +132,27 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements IBinaryTree
     }
 
     @Override
+    public void InOrderReverso(ITraversal<K, V> traversalMethod) {
+        if (isEmpty()){
+            return;
+        } else {
+            internalInOrderReverso(traversalMethod, _root);
+        }
+    }
+
+    private void internalInOrderReverso(ITraversal<K, V> traversalMethod, BinaryTreeNode<K, V> actualNode){
+        if (actualNode.get_rightChild() != null){
+            internalInOrderReverso(traversalMethod, actualNode.get_rightChild());
+        }
+
+        traversalMethod.visitar(actualNode);
+
+        if (actualNode.get_leftChild() != null){
+            internalInOrderReverso(traversalMethod, actualNode.get_leftChild());
+        }
+    }
+
+    @Override
     public void PreOrder(ITraversal<K, V> traversalMethod) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'PreOrder'");

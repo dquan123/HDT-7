@@ -12,6 +12,8 @@ public interface IBinaryTree<K extends Comparable<K>, V>{
 
     void InOrder(ITraversal<K, V> traversalMethod);
 
+    void InOrderReverso(ITraversal<K, V> traversalMethod);
+
     void PreOrder(ITraversal<K, V> traversalMethod);
 
     void PostOrder(ITraversal<K, V> traversalMethod);
