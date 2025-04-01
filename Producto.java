@@ -13,8 +13,24 @@ public class Producto {
         this.category = category;
     }
 
-    public String getSku() {
-        return sku;
+    public String getSku() { 
+        return sku; 
+    }
+
+    public String getPriceCurrent() {
+        return priceCurrent; 
+        }
+
+    public String getPriceRetail() {
+        return priceRetail; 
+    }
+
+    public String getProductName() { 
+        return productName; 
+    }
+
+    public String getCategory() { 
+        return category; 
     }
 
     @Override

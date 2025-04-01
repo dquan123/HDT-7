@@ -66,7 +66,38 @@ public class Principal {
 
                     switch (opcion){
                         case 1:
-                            System.out.print("Ingresa el SKU: ");
+                            System.out.print("Ingresa el SKU buscar: ");
+                            String skuBuscado = scanner.nextLine();
+
+                            ListarElementos<String, Producto> recolector = new ListarElementos<>();
+                            arbolProductos.InOrder(recolector); // Recorremos todo el árbol
+
+                            Producto mejorOpcion = null;
+                            double menorPrecio = Double.MAX_VALUE;
+
+                            for (Producto p : recolector.elementos) {
+                                if (p.getSku().equalsIgnoreCase(skuBuscado)) {
+                                    try {
+                                        double precio = Double.parseDouble(p.getPriceCurrent());
+                                        if (precio < menorPrecio) {
+                                            menorPrecio = precio;
+                                            mejorOpcion = p;
+                                        }
+                                    } catch (NumberFormatException e) {
+                                        // Si hay un error convirtiendo precio, ignoramos ese producto
+                                    }
+                                }
+                            }
+
+                            if (mejorOpcion != null) {
+                                System.out.println("\n Mejor opción encontrada para SKU " + skuBuscado + ":");
+                                System.out.println("Nombre: " + mejorOpcion.getProductName());
+                                System.out.println("Categoría: " + mejorOpcion.getCategory());
+                                System.out.println("Precio actual (más bajo): Q" + mejorOpcion.getPriceCurrent());
+                                System.out.println("Precio original: Q" + mejorOpcion.getPriceRetail());
+                            } else {
+                                System.out.println("No se encontró ningún producto con ese SKU.");
+                            }
                             break;
                         case 2:
                             arbolProductos.InOrder(new ElementsToConsole<>());
